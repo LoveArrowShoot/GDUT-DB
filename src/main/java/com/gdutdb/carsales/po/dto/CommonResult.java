@@ -33,15 +33,15 @@ public class CommonResult {
         return new CommonResult(codeConstants.SUCCESS, message, null);
     }
 
-    public CommonResult successResult(Object data){
+    public <T> CommonResult successResult(T data){
         return new CommonResult(codeConstants.SUCCESS, null, data);
     }
 
-    public CommonResult FailResult(){
+    public CommonResult failResult(){
         return new CommonResult(codeConstants.FAIL, null, null);
     }
 
-    public CommonResult FailResult(String message){
+    public CommonResult failResult(String message){
         return new CommonResult(codeConstants.FAIL, message, null);
     }
 
