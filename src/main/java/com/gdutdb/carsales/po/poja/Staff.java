@@ -40,6 +40,11 @@ public class Staff implements Serializable {
      */
     private Integer staffDistributorId;
 
+    /**
+     * 是否启用
+     */
+    private Boolean enable;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -59,7 +64,8 @@ public class Staff implements Serializable {
             && (this.getStaffName() == null ? other.getStaffName() == null : this.getStaffName().equals(other.getStaffName()))
             && (this.getStaffPhone() == null ? other.getStaffPhone() == null : this.getStaffPhone().equals(other.getStaffPhone()))
             && (this.getStaffPassword() == null ? other.getStaffPassword() == null : this.getStaffPassword().equals(other.getStaffPassword()))
-            && (this.getStaffDistributorId() == null ? other.getStaffDistributorId() == null : this.getStaffDistributorId().equals(other.getStaffDistributorId()));
+            && (this.getStaffDistributorId() == null ? other.getStaffDistributorId() == null : this.getStaffDistributorId().equals(other.getStaffDistributorId()))
+            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()));
     }
 
     @Override
@@ -71,6 +77,7 @@ public class Staff implements Serializable {
         result = prime * result + ((getStaffPhone() == null) ? 0 : getStaffPhone().hashCode());
         result = prime * result + ((getStaffPassword() == null) ? 0 : getStaffPassword().hashCode());
         result = prime * result + ((getStaffDistributorId() == null) ? 0 : getStaffDistributorId().hashCode());
+        result = prime * result + ((getEnable() == null) ? 0 : getEnable().hashCode());
         return result;
     }
 
@@ -85,6 +92,7 @@ public class Staff implements Serializable {
         sb.append(", staffPhone=").append(staffPhone);
         sb.append(", staffPassword=").append(staffPassword);
         sb.append(", staffDistributorId=").append(staffDistributorId);
+        sb.append(", enable=").append(enable);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

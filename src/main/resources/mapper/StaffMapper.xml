@@ -10,10 +10,11 @@
             <result property="staffPhone" column="staff_phone" jdbcType="VARCHAR"/>
             <result property="staffPassword" column="staff_password" jdbcType="VARCHAR"/>
             <result property="staffDistributorId" column="staff_distributor_id" jdbcType="INTEGER"/>
+            <result property="enable" column="enable" jdbcType="BOOLEAN"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         staff_id,staff_name,staff_phone,
-        staff_password,staff_distributor_id
+        staff_password,staff_distributor_id,enable
     </sql>
 </mapper>

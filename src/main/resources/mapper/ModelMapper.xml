@@ -8,9 +8,11 @@
             <id property="modelId" column="model_id" jdbcType="INTEGER"/>
             <result property="modelName" column="model_name" jdbcType="VARCHAR"/>
             <result property="modelBrandId" column="model_brand_id" jdbcType="INTEGER"/>
+            <result property="enable" column="enable" jdbcType="BOOLEAN"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        model_id,model_name,model_brand_id
+        model_id,model_name,model_brand_id,
+        enable
     </sql>
 </mapper>
