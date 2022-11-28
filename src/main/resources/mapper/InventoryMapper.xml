@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdutdb.carsales.mapper.InventoryMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdutdb.carsales.po.poja.Inventory">
+            <result property="inventoryModelId" column="inventory_model_id" jdbcType="INTEGER"/>
+            <result property="inventoryDistributorId" column="inventory_distributor_id" jdbcType="INTEGER"/>
+            <result property="inventoryCount" column="inventory_count" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        inventory_model_id,inventory_distributor_id,inventory_count
+    </sql>
+</mapper>

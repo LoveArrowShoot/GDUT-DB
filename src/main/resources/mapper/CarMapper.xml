@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdutdb.carsales.mapper.CarMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdutdb.carsales.po.poja.Car">
+            <id property="carVin" column="car_vin" jdbcType="INTEGER"/>
+            <result property="carBrand" column="car_brand" jdbcType="VARCHAR"/>
+            <result property="carModel" column="car_model" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        car_vin,car_brand,car_model
+    </sql>
+</mapper>

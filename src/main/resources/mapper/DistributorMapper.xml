@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdutdb.carsales.mapper.DistributorMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdutdb.carsales.po.poja.Distributor">
+            <id property="distributorId" column="distributor_id" jdbcType="INTEGER"/>
+            <result property="distributorName" column="distributor_name" jdbcType="VARCHAR"/>
+            <result property="distributorUsername" column="distributor_username" jdbcType="VARCHAR"/>
+            <result property="distributorPhone" column="distributor_phone" jdbcType="VARCHAR"/>
+            <result property="distributorPassword" column="distributor_password" jdbcType="VARCHAR"/>
+            <result property="distributorAddress" column="distributor_address" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        distributor_id,distributor_name,distributor_username,
+        distributor_phone,distributor_password,distributor_address
+    </sql>
+</mapper>
