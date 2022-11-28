@@ -7,9 +7,10 @@
     <resultMap id="BaseResultMap" type="com.gdutdb.carsales.po.poja.Option">
             <id property="optionId" column="option_id" jdbcType="INTEGER"/>
             <result property="optionName" column="option_name" jdbcType="VARCHAR"/>
+            <result property="enable" column="enable" jdbcType="BOOLEAN"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        option_id,option_name
+        option_id,option_name,enable
     </sql>
 </mapper>

@@ -11,10 +11,12 @@
             <result property="distributorPhone" column="distributor_phone" jdbcType="VARCHAR"/>
             <result property="distributorPassword" column="distributor_password" jdbcType="VARCHAR"/>
             <result property="distributorAddress" column="distributor_address" jdbcType="VARCHAR"/>
+            <result property="enable" column="enable" jdbcType="BOOLEAN"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         distributor_id,distributor_name,distributor_username,
-        distributor_phone,distributor_password,distributor_address
+        distributor_phone,distributor_password,distributor_address,
+        enable
     </sql>
 </mapper>

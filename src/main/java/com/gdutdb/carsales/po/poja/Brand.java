@@ -25,6 +25,11 @@ public class Brand implements Serializable {
      */
     private String brandName;
 
+    /**
+     * 是否启动
+     */
+    private Boolean enable;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -41,7 +46,8 @@ public class Brand implements Serializable {
         }
         Brand other = (Brand) that;
         return (this.getBrandId() == null ? other.getBrandId() == null : this.getBrandId().equals(other.getBrandId()))
-            && (this.getBrandName() == null ? other.getBrandName() == null : this.getBrandName().equals(other.getBrandName()));
+            && (this.getBrandName() == null ? other.getBrandName() == null : this.getBrandName().equals(other.getBrandName()))
+            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()));
     }
 
     @Override
@@ -50,6 +56,7 @@ public class Brand implements Serializable {
         int result = 1;
         result = prime * result + ((getBrandId() == null) ? 0 : getBrandId().hashCode());
         result = prime * result + ((getBrandName() == null) ? 0 : getBrandName().hashCode());
+        result = prime * result + ((getEnable() == null) ? 0 : getEnable().hashCode());
         return result;
     }
 
@@ -61,6 +68,7 @@ public class Brand implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", brandId=").append(brandId);
         sb.append(", brandName=").append(brandName);
+        sb.append(", enable=").append(enable);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -45,6 +45,11 @@ public class Distributor implements Serializable {
      */
     private String distributorAddress;
 
+    /**
+     * 是否启用
+     */
+    private Boolean enable;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -65,7 +70,8 @@ public class Distributor implements Serializable {
             && (this.getDistributorUsername() == null ? other.getDistributorUsername() == null : this.getDistributorUsername().equals(other.getDistributorUsername()))
             && (this.getDistributorPhone() == null ? other.getDistributorPhone() == null : this.getDistributorPhone().equals(other.getDistributorPhone()))
             && (this.getDistributorPassword() == null ? other.getDistributorPassword() == null : this.getDistributorPassword().equals(other.getDistributorPassword()))
-            && (this.getDistributorAddress() == null ? other.getDistributorAddress() == null : this.getDistributorAddress().equals(other.getDistributorAddress()));
+            && (this.getDistributorAddress() == null ? other.getDistributorAddress() == null : this.getDistributorAddress().equals(other.getDistributorAddress()))
+            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()));
     }
 
     @Override
@@ -78,6 +84,7 @@ public class Distributor implements Serializable {
         result = prime * result + ((getDistributorPhone() == null) ? 0 : getDistributorPhone().hashCode());
         result = prime * result + ((getDistributorPassword() == null) ? 0 : getDistributorPassword().hashCode());
         result = prime * result + ((getDistributorAddress() == null) ? 0 : getDistributorAddress().hashCode());
+        result = prime * result + ((getEnable() == null) ? 0 : getEnable().hashCode());
         return result;
     }
 
@@ -93,6 +100,7 @@ public class Distributor implements Serializable {
         sb.append(", distributorPhone=").append(distributorPhone);
         sb.append(", distributorPassword=").append(distributorPassword);
         sb.append(", distributorAddress=").append(distributorAddress);
+        sb.append(", enable=").append(enable);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

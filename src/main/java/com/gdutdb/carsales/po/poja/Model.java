@@ -30,6 +30,11 @@ public class Model implements Serializable {
      */
     private Integer modelBrandId;
 
+    /**
+     * 是否启用
+     */
+    private Boolean enable;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -47,7 +52,8 @@ public class Model implements Serializable {
         Model other = (Model) that;
         return (this.getModelId() == null ? other.getModelId() == null : this.getModelId().equals(other.getModelId()))
             && (this.getModelName() == null ? other.getModelName() == null : this.getModelName().equals(other.getModelName()))
-            && (this.getModelBrandId() == null ? other.getModelBrandId() == null : this.getModelBrandId().equals(other.getModelBrandId()));
+            && (this.getModelBrandId() == null ? other.getModelBrandId() == null : this.getModelBrandId().equals(other.getModelBrandId()))
+            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()));
     }
 
     @Override
@@ -57,6 +63,7 @@ public class Model implements Serializable {
         result = prime * result + ((getModelId() == null) ? 0 : getModelId().hashCode());
         result = prime * result + ((getModelName() == null) ? 0 : getModelName().hashCode());
         result = prime * result + ((getModelBrandId() == null) ? 0 : getModelBrandId().hashCode());
+        result = prime * result + ((getEnable() == null) ? 0 : getEnable().hashCode());
         return result;
     }
 
@@ -69,6 +76,7 @@ public class Model implements Serializable {
         sb.append(", modelId=").append(modelId);
         sb.append(", modelName=").append(modelName);
         sb.append(", modelBrandId=").append(modelBrandId);
+        sb.append(", enable=").append(enable);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

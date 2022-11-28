@@ -25,23 +25,23 @@ public class CommonResult {
      */
     Object data;
 
-    public CommonResult successResult(){
+    public static CommonResult successResult(){
         return new CommonResult(codeConstants.SUCCESS, null, null);
     }
 
-    public CommonResult successResult(String message){
+    public static CommonResult successResult(String message){
         return new CommonResult(codeConstants.SUCCESS, message, null);
     }
 
-    public <T> CommonResult successResult(T data){
+    public static <T> CommonResult successResult(T data){
         return new CommonResult(codeConstants.SUCCESS, null, data);
     }
 
-    public CommonResult failResult(){
+    public static CommonResult failResult(){
         return new CommonResult(codeConstants.FAIL, null, null);
     }
 
-    public CommonResult failResult(String message){
+    public static CommonResult failResult(String message){
         return new CommonResult(codeConstants.FAIL, message, null);
     }
 

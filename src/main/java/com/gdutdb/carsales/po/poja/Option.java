@@ -25,6 +25,11 @@ public class Option implements Serializable {
      */
     private String optionName;
 
+    /**
+     * 是否启用
+     */
+    private Boolean enable;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -41,7 +46,8 @@ public class Option implements Serializable {
         }
         Option other = (Option) that;
         return (this.getOptionId() == null ? other.getOptionId() == null : this.getOptionId().equals(other.getOptionId()))
-            && (this.getOptionName() == null ? other.getOptionName() == null : this.getOptionName().equals(other.getOptionName()));
+            && (this.getOptionName() == null ? other.getOptionName() == null : this.getOptionName().equals(other.getOptionName()))
+            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()));
     }
 
     @Override
@@ -50,6 +56,7 @@ public class Option implements Serializable {
         int result = 1;
         result = prime * result + ((getOptionId() == null) ? 0 : getOptionId().hashCode());
         result = prime * result + ((getOptionName() == null) ? 0 : getOptionName().hashCode());
+        result = prime * result + ((getEnable() == null) ? 0 : getEnable().hashCode());
         return result;
     }
 
@@ -61,6 +68,7 @@ public class Option implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", optionId=").append(optionId);
         sb.append(", optionName=").append(optionName);
+        sb.append(", enable=").append(enable);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

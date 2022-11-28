@@ -30,6 +30,11 @@ public class Car implements Serializable {
      */
     private String carModel;
 
+    /**
+     * 是否启用
+     */
+    private Boolean enable;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -47,7 +52,8 @@ public class Car implements Serializable {
         Car other = (Car) that;
         return (this.getCarVin() == null ? other.getCarVin() == null : this.getCarVin().equals(other.getCarVin()))
             && (this.getCarBrand() == null ? other.getCarBrand() == null : this.getCarBrand().equals(other.getCarBrand()))
-            && (this.getCarModel() == null ? other.getCarModel() == null : this.getCarModel().equals(other.getCarModel()));
+            && (this.getCarModel() == null ? other.getCarModel() == null : this.getCarModel().equals(other.getCarModel()))
+            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()));
     }
 
     @Override
@@ -57,6 +63,7 @@ public class Car implements Serializable {
         result = prime * result + ((getCarVin() == null) ? 0 : getCarVin().hashCode());
         result = prime * result + ((getCarBrand() == null) ? 0 : getCarBrand().hashCode());
         result = prime * result + ((getCarModel() == null) ? 0 : getCarModel().hashCode());
+        result = prime * result + ((getEnable() == null) ? 0 : getEnable().hashCode());
         return result;
     }
 
@@ -69,6 +76,7 @@ public class Car implements Serializable {
         sb.append(", carVin=").append(carVin);
         sb.append(", carBrand=").append(carBrand);
         sb.append(", carModel=").append(carModel);
+        sb.append(", enable=").append(enable);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
