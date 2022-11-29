@@ -8,7 +8,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 
+ *
  * @TableName car_option
  */
 @TableName(value ="car_option")
@@ -26,6 +26,11 @@ public class CarOption implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
+    public CarOption(Integer carVin, Integer optionId) {
+        this.carVin=carVin;
+        this.optionId=optionId;
+    }
 
     @Override
     public boolean equals(Object that) {
