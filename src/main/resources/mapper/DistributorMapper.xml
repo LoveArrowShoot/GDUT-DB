@@ -19,4 +19,10 @@
         distributor_phone,distributor_password,distributor_address,
         enable
     </sql>
+
+    <delete id="deleteByDistributorId">
+        UPDATE distributor
+        SET distributor.enable = false
+        WHERE distributor.distributor_id = #distributorId
+    </delete>
 </mapper>

@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Entity com.gdutdb.carsales.po.poja.Distributor
  */
 public interface DistributorMapper extends BaseMapper<Distributor> {
-
+    Integer deleteByDistributorId(Integer distributorId);
 }
 
 

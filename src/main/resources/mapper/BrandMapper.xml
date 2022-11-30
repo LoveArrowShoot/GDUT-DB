@@ -13,4 +13,10 @@
     <sql id="Base_Column_List">
         brand_id,brand_name,enable
     </sql>
+    
+    <update id="deleteByBrandId">
+        UPDATE brand
+        SET brand.enable = false
+        WHERE brand.brand_id = #brandId
+    </update>
 </mapper>
