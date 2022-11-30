@@ -3,6 +3,7 @@ package com.gdutdb.carsales.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gdutdb.carsales.po.dto.CommonResult;
 import com.gdutdb.carsales.po.poja.Model;
 import com.gdutdb.carsales.service.ModelService;
 import org.springframework.web.bind.annotation.*;
@@ -26,16 +27,18 @@ public class ModelController {
 
     // 查询所有数据
     @GetMapping
-    public List<Model> findAll() {
-        //TODO 展示该模型所对应的品牌
-        return modelService.list();
+    public CommonResult findAll() {
+        return CommonResult.successResult(modelService.queryAll());
     }
 
-    // TODO 伪删除
+    @GetMapping("/{id}")
+    public CommonResult findByModelId(@PathVariable Integer id) {
+        return CommonResult.successResult(modelService.queryByModelId(id));
+    }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable Integer id) {
-        return modelService.removeById(id);
+    public CommonResult delete(@PathVariable Integer id) {
+        return modelService.deleteByModelId(id);
     }
 
     @PostMapping("/del/batch")
@@ -46,7 +49,7 @@ public class ModelController {
 
     // 分页查询 - mybatis-plus的方式
     @GetMapping("/page")
-    public IPage<Model> findPage(@RequestParam Integer pageNum,
+    public CommonResult findPage(@RequestParam Integer pageNum,
                                   @RequestParam Integer pageSize,
                                   @RequestParam(defaultValue = "") String name)
     {
@@ -58,6 +61,6 @@ public class ModelController {
         }
 
         queryWrapper.orderByDesc("model_id");
-        return modelService.page(page, queryWrapper);
+        return CommonResult.successResult(modelService.page(page, queryWrapper));
     }
 }
