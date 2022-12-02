@@ -11,5 +11,7 @@ public interface CarService extends IService<Car> {
     CommonResult queryAll();
     CommonResult queryByModelId(Integer modelId);
     CommonResult queryOptionOfCar(Integer carVin);
+    CommonResult queryByDistributorId(Integer distributorId);
+    CommonResult queryByDistributorIdAndBrandId(Integer distributorId, Integer brandId);
     CommonResult deleteByCarVin(Integer carVin);
 }

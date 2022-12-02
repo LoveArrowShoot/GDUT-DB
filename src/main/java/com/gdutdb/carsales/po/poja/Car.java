@@ -21,6 +21,11 @@ public class Car implements Serializable {
     private Integer carVin;
 
     /**
+     * 经销商编号
+     */
+    private Integer carDistributorId;
+
+    /**
      * 车辆所属模型
      */
     private Integer carModelId;
@@ -46,6 +51,7 @@ public class Car implements Serializable {
         }
         Car other = (Car) that;
         return (this.getCarVin() == null ? other.getCarVin() == null : this.getCarVin().equals(other.getCarVin()))
+            && (this.getCarDistributorId() == null ? other.getCarDistributorId() == null : this.getCarDistributorId().equals(other.getCarDistributorId()))
             && (this.getCarModelId() == null ? other.getCarModelId() == null : this.getCarModelId().equals(other.getCarModelId()))
             && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()));
     }
@@ -55,6 +61,7 @@ public class Car implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getCarVin() == null) ? 0 : getCarVin().hashCode());
+        result = prime * result + ((getCarDistributorId() == null) ? 0 : getCarDistributorId().hashCode());
         result = prime * result + ((getCarModelId() == null) ? 0 : getCarModelId().hashCode());
         result = prime * result + ((getEnable() == null) ? 0 : getEnable().hashCode());
         return result;
@@ -67,6 +74,7 @@ public class Car implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", carVin=").append(carVin);
+        sb.append(", carDistributorId=").append(carDistributorId);
         sb.append(", carModelId=").append(carModelId);
         sb.append(", enable=").append(enable);
         sb.append(", serialVersionUID=").append(serialVersionUID);

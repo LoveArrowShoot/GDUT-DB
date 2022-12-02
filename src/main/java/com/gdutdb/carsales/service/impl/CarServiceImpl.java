@@ -34,6 +34,16 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car>
     }
 
     @Override
+    public CommonResult queryByDistributorId(Integer distributorId) {
+        return CommonResult.successResult(carMapper.queryByDistributorId(distributorId));
+    }
+
+    @Override
+    public CommonResult queryByDistributorIdAndBrandId(Integer distributorId, Integer brandId) {
+        return CommonResult.successResult(carMapper.queryByDistributorIdAndBrandId(distributorId, brandId));
+    }
+
+    @Override
     public CommonResult deleteByCarVin(Integer carVin) {
         return carMapper.deleteByCarVin(carVin) > 0 ? CommonResult.successResult() : CommonResult.failResult("删除失败");
     }

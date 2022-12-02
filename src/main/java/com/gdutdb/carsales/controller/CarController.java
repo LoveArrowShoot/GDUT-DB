@@ -64,6 +64,17 @@ public class CarController {
             return CommonResult.successResult(carService.list());
         }
 
+        // 查询销售商拥有的车辆
+        @GetMapping("/distributor/{distributorId}")
+        public CommonResult findByDistributorId(@PathVariable Integer distributorId) {
+            return CommonResult.successResult(carService.queryByDistributorId(distributorId));
+        }
+
+        // 查询销售商拥有的某个品牌的车辆
+        @GetMapping("/distributor/{distributorId}/brand/{brandId}")
+        public CommonResult findByDistributorId(@PathVariable Integer distributorId, @PathVariable Integer brandId) {
+            return CommonResult.successResult(carService.queryByDistributorIdAndBrandId(distributorId, brandId));
+        }
 
         @DeleteMapping("/{id}")
         public CommonResult delete(@PathVariable Integer id) {
