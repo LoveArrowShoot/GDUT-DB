@@ -1,11 +1,7 @@
 package com.gdutdb.carsales.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gdutdb.carsales.po.dto.CommonResult;
 import com.gdutdb.carsales.po.poja.Inventory;
-import com.gdutdb.carsales.po.poja.Model;
 import com.gdutdb.carsales.service.InventoryService;
 import com.gdutdb.carsales.service.ModelService;
 import org.springframework.web.bind.annotation.*;

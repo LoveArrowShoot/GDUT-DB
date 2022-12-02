@@ -13,8 +13,45 @@
             <result property="enable" column="enable" jdbcType="BOOLEAN"/>
     </resultMap>
 
+    <resultMap id="StaffDetailMap" type="com.gdutdb.carsales.po.dto.StaffDetail">
+        <id property="staffId" column="staff_id" jdbcType="INTEGER"/>
+        <result property="staffName" column="staff_name" jdbcType="VARCHAR"/>
+        <result property="staffPhone" column="staff_phone" jdbcType="VARCHAR"/>
+        <result property="staffPassword" column="staff_password" jdbcType="VARCHAR"/>
+        <result property="staffDistributorId" column="staff_distributor_id" jdbcType="INTEGER"/>
+        <result property="enable" column="enable" jdbcType="BOOLEAN"/>
+
+        <result property="distributor.distributorId" column="distributor_id" jdbcType="INTEGER"/>
+        <result property="distributor.distributorName" column="distributor_name" jdbcType="VARCHAR"/>
+        <result property="distributor.distributorUsername" column="distributor_username" jdbcType="VARCHAR"/>
+        <result property="distributor.distributorPhone" column="distributor_phone" jdbcType="VARCHAR"/>
+        <result property="distributor.distributorPassword" column="distributor_password" jdbcType="VARCHAR"/>
+        <result property="distributor.distributorAddress" column="distributor_address" jdbcType="VARCHAR"/>
+        <result property="distributor.enable" column="enable" jdbcType="BOOLEAN"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
         staff_id,staff_name,staff_phone,
         staff_password,staff_distributor_id,enable
     </sql>
+
+    <select id="queryAllByEnable" resultMap="StaffDetailMap">
+        SELECT *
+        FROM staff
+            LEFT JOIN distributor d on d.distributor_id = staff.staff_distributor_id
+        WHERE d.enable
+    </select>
+
+    <select id="queryByDistributorId" resultMap="StaffDetailMap">
+        SELECT *
+        FROM staff
+                 LEFT JOIN distributor d on d.distributor_id = staff.staff_distributor_id
+        WHERE d.enable AND staff.staff_distributor_id = #distributorId
+    </select>
+
+    <update id="deleteByStaffId" parameterType="integer">
+        UPDATE staff
+        SET enable = false
+        WHERE staff_id = #staffId
+    </update>
 </mapper>

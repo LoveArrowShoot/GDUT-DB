@@ -1,9 +1,6 @@
 package com.gdutdb.carsales.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gdutdb.carsales.po.poja.Model;
+import com.gdutdb.carsales.po.dto.CommonResult;
 import com.gdutdb.carsales.po.poja.Staff;
 import com.gdutdb.carsales.service.StaffService;
 import org.springframework.web.bind.annotation.*;
@@ -29,15 +26,19 @@ public class StaffController {
 
     // 查询所有数据
     @GetMapping
-    public List<Staff> findAll() {
-        //TODO 展示该员工所属的经销商姓名
-        return staffService.list();
+    public CommonResult findAll() {
+        return staffService.queryAll();
     }
 
-    // TODO 伪删除
+    // 查询销售商数据
+    @GetMapping("/distributor/{distributorId}")
+    public CommonResult findByDistributorId(@PathVariable Integer distributorId) {
+        return staffService.queryByDistributorId(distributorId);
+    }
+
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable Integer id) {
-        return staffService.removeById(id);
+    public CommonResult delete(@PathVariable Integer id) {
+        return staffService.deleteByStaffId(id);
     }
 
     @PostMapping("/del/batch")
@@ -45,20 +46,24 @@ public class StaffController {
         return staffService.removeByIds(ids);
     }
 
-    // 分页查询 - mybatis-plus的方式
-    @GetMapping("/page")
-    public IPage<Staff> findPage(@RequestParam Integer pageNum,
-                                 @RequestParam Integer pageSize,
-                                 @RequestParam(defaultValue = "") String name)
-    {
-        //TODO 展示该员工所属的经销商姓名
-        IPage<Staff> page = new Page<>(pageNum, pageSize);
-        QueryWrapper<Staff> queryWrapper = new QueryWrapper<>();
-        if (!"".equals(name)) {
-            queryWrapper.like("staff_name", name);
-        }
-
-        queryWrapper.orderByDesc("staff_id");
-        return staffService.page(page, queryWrapper);
+    public CommonResult update(@RequestBody Staff staff){
+        return staffService.updateById(staff) ? CommonResult.successResult() : CommonResult.failResult("更新失败");
     }
+
+//    // 分页查询 - mybatis-plus的方式
+//    @GetMapping("/page")
+//    public IPage<Staff> findPage(@RequestParam Integer pageNum,
+//                                 @RequestParam Integer pageSize,
+//                                 @RequestParam(defaultValue = "") String name)
+//    {
+//        //TODO 展示该员工所属的经销商姓名
+//        IPage<Staff> page = new Page<>(pageNum, pageSize);
+//        QueryWrapper<Staff> queryWrapper = new QueryWrapper<>();
+//        if (!"".equals(name)) {
+//            queryWrapper.like("staff_name", name);
+//        }
+//
+//        queryWrapper.orderByDesc("staff_id");
+//        return staffService.page(page, queryWrapper);
+//    }
 }
