@@ -31,8 +31,7 @@ public class ModelController {
         return CommonResult.successResult(modelService.queryByModelId(id));
     }
 
-    @GetMapping("/option/{id}")
-    //TODO 查看,修改该模型可选的选项并且在model_option表中修改
+    @GetMapping("/{id}/option")
     public CommonResult queryOptionOfModel(@PathVariable Integer id){
         return modelService.queryOptionOfModel(id);
     }

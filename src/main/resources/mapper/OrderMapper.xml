@@ -7,7 +7,7 @@
     <resultMap id="BaseResultMap" type="com.gdutdb.carsales.po.poja.Order">
             <id property="orderId" column="order_id" jdbcType="INTEGER"/>
             <result property="orderStaffId" column="order_staff_id" jdbcType="INTEGER"/>
-            <result property="orderCustomerPhone" column="order_customer_phone" jdbcType="INTEGER"/>
+            <result property="orderCustomerPhone" column="order_customer_phone" jdbcType="VARCHAR"/>
             <result property="orderMoney" column="order_money" jdbcType="INTEGER"/>
             <result property="orderVin" column="order_vin" jdbcType="INTEGER"/>
             <result property="orderCustomerName" column="order_customer_name" jdbcType="VARCHAR"/>

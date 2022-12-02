@@ -23,14 +23,6 @@ public class CarController {
         @Resource
         private CarOptionService carOptionService;
 
-        @Resource
-        private OptionService optionService;
-
-        @Resource
-        private ModelService modelService;
-
-        @Resource
-        private ModelOptionService modelOptionService;
         // 新增和修改
         @PostMapping
         public CommonResult save(@RequestBody Car car) {
@@ -51,14 +43,8 @@ public class CarController {
         //查看这个车所对应的品牌的选项，已选的选项则进行标记
         @GetMapping("/{id}/option")
         public CommonResult findOption(@PathVariable Integer id){
-            //获取该车对应的品牌的id
-            String modelName = carService.getOne(new QueryWrapper<Car>().eq("car_vin", id)).getCarModel();
-            Integer modelId = modelService.getOne(new QueryWrapper<Model>().eq("model_name", modelName)).getModelId();
-            //获取该品牌对应的选项的id
-            List<Integer> optionId = modelOptionService.list(new QueryWrapper<ModelOption>().eq("model_id", modelId)).
-                                            stream().map(ModelOption::getOptionId).collect(Collectors.toList());
             //根据获取的选项id找到选项
-            List<Option> option = (List<Option>) optionService.listByIds(optionId);
+            List<Option> option = (List<Option>) carService.queryOptionOfCar(id).getData();
             //获取该车已有的选项的id
             List<Integer> carOption = carOptionService.list(new QueryWrapper<CarOption>().eq("car_vin", id)).
                                             stream().map(CarOption::getOptionId).collect(Collectors.toList());
@@ -82,12 +68,17 @@ public class CarController {
         @DeleteMapping("/{id}")
         public CommonResult delete(@PathVariable Integer id) {
             return  carService.update(new UpdateWrapper<Car>().eq("car_vin",id).set("enable",1))
-                    ? CommonResult.successResult():CommonResult.failResult("批量删除失败");
+                    ? CommonResult.successResult():CommonResult.failResult("删除失败");
         }
 
         @PostMapping("/del/batch")
         public CommonResult deleteBatch(@RequestBody List<Integer> ids) {
             return carService.removeByIds(ids)?CommonResult.successResult():CommonResult.failResult("批量删除失败");
+        }
+
+        @PutMapping()
+        public CommonResult update(@RequestBody Car car){
+            return carService.updateById(car) ? CommonResult.successResult() : CommonResult.failResult();
         }
 
 

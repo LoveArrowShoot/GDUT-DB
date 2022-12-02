@@ -28,7 +28,7 @@ public class Order implements Serializable {
     /**
      * 顾客电话
      */
-    private Integer orderCustomerPhone;
+    private String orderCustomerPhone;
 
     /**
      * 订单金额

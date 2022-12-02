@@ -21,14 +21,9 @@ public class Car implements Serializable {
     private Integer carVin;
 
     /**
-     * 车辆所属品牌
-     */
-    private String carBrand;
-
-    /**
      * 车辆所属模型
      */
-    private String carModel;
+    private Integer carModelId;
 
     /**
      * 是否启用
@@ -51,8 +46,7 @@ public class Car implements Serializable {
         }
         Car other = (Car) that;
         return (this.getCarVin() == null ? other.getCarVin() == null : this.getCarVin().equals(other.getCarVin()))
-            && (this.getCarBrand() == null ? other.getCarBrand() == null : this.getCarBrand().equals(other.getCarBrand()))
-            && (this.getCarModel() == null ? other.getCarModel() == null : this.getCarModel().equals(other.getCarModel()))
+            && (this.getCarModelId() == null ? other.getCarModelId() == null : this.getCarModelId().equals(other.getCarModelId()))
             && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()));
     }
 
@@ -61,8 +55,7 @@ public class Car implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getCarVin() == null) ? 0 : getCarVin().hashCode());
-        result = prime * result + ((getCarBrand() == null) ? 0 : getCarBrand().hashCode());
-        result = prime * result + ((getCarModel() == null) ? 0 : getCarModel().hashCode());
+        result = prime * result + ((getCarModelId() == null) ? 0 : getCarModelId().hashCode());
         result = prime * result + ((getEnable() == null) ? 0 : getEnable().hashCode());
         return result;
     }
@@ -74,8 +67,7 @@ public class Car implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", carVin=").append(carVin);
-        sb.append(", carBrand=").append(carBrand);
-        sb.append(", carModel=").append(carModel);
+        sb.append(", carModelId=").append(carModelId);
         sb.append(", enable=").append(enable);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
