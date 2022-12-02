@@ -13,4 +13,10 @@
     <sql id="Base_Column_List">
         option_id,option_name,enable
     </sql>
+
+    <update id="deleteByOptionId">
+        UPDATE `option`
+        SET `option`.enable = false
+        WHERE option_id = #optionId
+    </update>
 </mapper>
