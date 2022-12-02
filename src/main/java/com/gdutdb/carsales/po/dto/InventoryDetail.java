@@ -7,6 +7,8 @@ import lombok.Data;
 
 @Data
 public class InventoryDetail {
+    private Integer inventoryId;
+
     /**
      * 模型
      */
@@ -15,4 +17,9 @@ public class InventoryDetail {
      * 供应商
      */
     Distributor distributor;
+
+    /**
+     * 库存数量
+     */
+    private Integer inventoryCount;
 }

@@ -15,6 +15,12 @@ import lombok.Data;
 @Data
 public class Inventory implements Serializable {
     /**
+     * 库存编号
+     */
+    @TableId(type = IdType.AUTO)
+    private Integer inventoryId;
+
+    /**
      * 模型编号
      */
     private Integer inventoryModelId;
@@ -44,7 +50,8 @@ public class Inventory implements Serializable {
             return false;
         }
         Inventory other = (Inventory) that;
-        return (this.getInventoryModelId() == null ? other.getInventoryModelId() == null : this.getInventoryModelId().equals(other.getInventoryModelId()))
+        return (this.getInventoryId() == null ? other.getInventoryId() == null : this.getInventoryId().equals(other.getInventoryId()))
+            && (this.getInventoryModelId() == null ? other.getInventoryModelId() == null : this.getInventoryModelId().equals(other.getInventoryModelId()))
             && (this.getInventoryDistributorId() == null ? other.getInventoryDistributorId() == null : this.getInventoryDistributorId().equals(other.getInventoryDistributorId()))
             && (this.getInventoryCount() == null ? other.getInventoryCount() == null : this.getInventoryCount().equals(other.getInventoryCount()));
     }
@@ -53,6 +60,7 @@ public class Inventory implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + ((getInventoryId() == null) ? 0 : getInventoryId().hashCode());
         result = prime * result + ((getInventoryModelId() == null) ? 0 : getInventoryModelId().hashCode());
         result = prime * result + ((getInventoryDistributorId() == null) ? 0 : getInventoryDistributorId().hashCode());
         result = prime * result + ((getInventoryCount() == null) ? 0 : getInventoryCount().hashCode());
@@ -65,6 +73,7 @@ public class Inventory implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
+        sb.append(", inventoryId=").append(inventoryId);
         sb.append(", inventoryModelId=").append(inventoryModelId);
         sb.append(", inventoryDistributorId=").append(inventoryDistributorId);
         sb.append(", inventoryCount=").append(inventoryCount);

@@ -5,12 +5,60 @@
 <mapper namespace="com.gdutdb.carsales.mapper.InventoryMapper">
 
     <resultMap id="BaseResultMap" type="com.gdutdb.carsales.po.poja.Inventory">
+            <id property="inventoryId" column="inventory_id" jdbcType="INTEGER"/>
             <result property="inventoryModelId" column="inventory_model_id" jdbcType="INTEGER"/>
             <result property="inventoryDistributorId" column="inventory_distributor_id" jdbcType="INTEGER"/>
             <result property="inventoryCount" column="inventory_count" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        inventory_model_id,inventory_distributor_id,inventory_count
+        inventory_id,inventory_model_id,inventory_distributor_id,
+        inventory_count
     </sql>
+
+    <resultMap id="InventoryDetailMap" type="com.gdutdb.carsales.po.dto.InventoryDetail">
+        <id property="inventoryId" column="inventory_id" jdbcType="INTEGER"/>
+
+        <result property="modelDetail.modelId" column="inventory_model_id"/>
+        <result property="modelDetail.modelName" column="model_name"/>
+        <result property="modelDetail.modelBrandId" column="model_brand_id"/>
+        <result property="modelDetail.brandName" column="brand_name"/>
+
+        <result property="distributor.distributorId" column="inventory_distributor_id" jdbcType="INTEGER"/>
+        <result property="distributor.distributorName" column="distributor_name" jdbcType="VARCHAR"/>
+        <result property="distributor.distributorUsername" column="distributor_username" jdbcType="VARCHAR"/>
+        <result property="distributor.distributorPhone" column="distributor_phone" jdbcType="VARCHAR"/>
+        <result property="distributor.distributorPassword" column="distributor_password" jdbcType="VARCHAR"/>
+        <result property="distributor.distributorAddress" column="distributor_address" jdbcType="VARCHAR"/>
+        <result property="distributor.enable" column="enable" jdbcType="BOOLEAN"/>
+
+        <result property="inventoryCount" column="inventory_count" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="queryAll" resultMap="InventoryDetailMap">
+        SELECT *
+        FROM inventory i
+                 LEFT JOIN model m ON i.inventory_model_id = m.model_id
+                 LEFT JOIN distributor d on i.inventory_distributor_id = d.distributor_id
+    </select>
+
+    <select id="queryByDistributorId" resultMap="InventoryDetailMap">
+        SELECT *
+        FROM inventory i
+                 LEFT JOIN model m ON i.inventory_model_id = m.model_id
+                 LEFT JOIN distributor d on i.inventory_distributor_id = d.distributor_id
+        WHERE i.inventory_distributor_id = #distributorId
+    </select>
+
+    <delete id="deleteByInventoryId" parameterType="integer">
+        DELETE
+        FROM inventory i
+        WHERE i.inventory_id = #InventoryId
+    </delete>
+
+    <update id="updateCount" parameterType="integer">
+        UPDATE inventory i
+        SET i.inventory_count = #count
+        WHERE i.inventory_id = #InventoryId
+    </update>
 </mapper>
