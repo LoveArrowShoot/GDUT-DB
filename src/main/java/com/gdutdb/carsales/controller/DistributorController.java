@@ -16,10 +16,9 @@ public class DistributorController {
     @Resource
     private DistributorService distributorService;
 
-    //TODO 登录功能
     @GetMapping("/login")
     public CommonResult login(@RequestParam String username, @RequestParam String password){
-        return login(username, password);
+        return distributorService.login(username, password);
     }
 
     // 新增和修改
