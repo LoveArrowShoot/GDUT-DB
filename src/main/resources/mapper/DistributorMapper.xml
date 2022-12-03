@@ -20,6 +20,12 @@
         enable
     </sql>
 
+    <select id="queryAllByDistributorUsername" resultMap="BaseResultMap">
+        SELECT *
+        FROM distributor
+        WHERE distributor_name = #distributorName
+    </select>
+
     <delete id="deleteByDistributorId">
         UPDATE distributor
         SET distributor.enable = false

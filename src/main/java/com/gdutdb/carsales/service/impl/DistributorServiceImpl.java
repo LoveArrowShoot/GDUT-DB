@@ -8,6 +8,7 @@ import com.gdutdb.carsales.mapper.DistributorMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Objects;
 
 /**
  *
@@ -18,6 +19,18 @@ public class DistributorServiceImpl extends ServiceImpl<DistributorMapper, Distr
 
     @Resource
     DistributorMapper distributorMapper;
+
+    @Override
+    public CommonResult login(String username, String password) {
+        Distributor distributor = distributorMapper.queryAllByDistributorUsername(username);
+        if (Objects.isNull(distributor)){
+            return CommonResult.failResult("用户不存在");
+        }
+        if (!distributor.getDistributorPassword().equals(password)){
+            return CommonResult.failResult("用户名或密码错误");
+        }
+        return CommonResult.successResult();
+    }
 
     @Override
     public CommonResult deleteByDistributorId(Integer distributorId) {

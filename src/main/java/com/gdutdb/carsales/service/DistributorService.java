@@ -3,11 +3,13 @@ package com.gdutdb.carsales.service;
 import com.gdutdb.carsales.po.dto.CommonResult;
 import com.gdutdb.carsales.po.poja.Distributor;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
  */
 public interface DistributorService extends IService<Distributor> {
+    CommonResult login(String username, String password);
     /**
      * 伪删除
      * @param distributorId 供应商id
