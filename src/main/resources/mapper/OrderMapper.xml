@@ -13,8 +13,65 @@
             <result property="orderCustomerName" column="order_customer_name" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <resultMap id="OrderDetailMap" type="com.gdutdb.carsales.po.dto.OrderDetail">
+        <id property="orderId" column="order_id" jdbcType="INTEGER"/>
+        <result property="orderStaffId" column="order_staff_id" jdbcType="INTEGER"/>
+        <result property="orderCustomerPhone" column="order_customer_phone" jdbcType="VARCHAR"/>
+        <result property="orderMoney" column="order_money" jdbcType="INTEGER"/>
+        <result property="orderVin" column="order_vin" jdbcType="INTEGER"/>
+        <result property="orderCustomerName" column="order_customer_name" jdbcType="VARCHAR"/>
+
+        <result property="staff.staffId" column="order_staff_id" jdbcType="INTEGER"/>
+        <result property="staff.staffName" column="staff_name" jdbcType="VARCHAR"/>
+        <result property="staff.staffPhone" column="staff_phone" jdbcType="VARCHAR"/>
+        <result property="staff.staffPassword" column="staff_password" jdbcType="VARCHAR"/>
+        <result property="staff.staffDistributorId" column="staff_distributor_id" jdbcType="INTEGER"/>
+        <result property="staff.enable" column="enable" jdbcType="BOOLEAN"/>
+
+        <result property="carDetail.carVin" column="car_vin" jdbcType="INTEGER"/>
+        <result property="carDetail.carDistributorId" column="car_distributor_id" jdbcType="INTEGER"/>
+        <result property="carDetail.carModelId" column="car_model_id" jdbcType="INTEGER"/>
+        <result property="carDetail.enable" column="enable" jdbcType="BOOLEAN"/>
+
+        <result property="carDetail.brand.brandId" column="brand_id" jdbcType="INTEGER"/>
+        <result property="carDetail.brand.brandName" column="brand_name" jdbcType="VARCHAR"/>
+        <result property="carDetail.brand.enable" column="enable" jdbcType="BOOLEAN"/>
+    </resultMap>
     <sql id="Base_Column_List">
         order_id,order_staff_id,order_customer_phone,
         order_money,order_vin,order_customer_name
     </sql>
+
+    <select id="queryAll" resultMap="OrderDetailMap">
+        SELECT *
+        FROM `order`
+            LEFT JOIN car c on c.car_vin = `order`.order_vin
+            LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
+    </select>
+
+    <select id="queryByStaffId" resultMap="OrderDetailMap">
+        SELECT *
+        FROM `order`
+                 LEFT JOIN car c on c.car_vin = `order`.order_vin
+                 LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
+        WHERE `order`.order_staff_id = #staffId
+    </select>
+
+    <select id="queryByCarVin" resultMap="OrderDetailMap">
+        SELECT *
+        FROM `order`
+                 LEFT JOIN car c on c.car_vin = `order`.order_vin
+                 LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
+        WHERE `order`.order_vin = #carVin
+    </select>
+
+    <select id="queryByDistributorId" resultMap="OrderDetailMap">
+        SELECT *
+        FROM `order`
+                 LEFT JOIN car c on c.car_vin = `order`.order_vin
+                 LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
+                 LEFT JOIN distributor d on s.staff_distributor_id = d.distributor_id
+        WHERE d.distributor_id = #distributorId
+    </select>
+
 </mapper>

@@ -10,9 +10,11 @@ import java.util.List;
  */
 public interface InventoryMapper extends BaseMapper<Inventory> {
     List<Inventory> queryAll();
+    Inventory queryByCarVin(Integer carVin);
     Inventory queryByDistributorId(Integer distributeId);
     Integer deleteByInventoryId(Integer inventoryId);
     Integer updateCount(Integer inventoryId, Integer count);
+    Integer changeCount(Integer inventoryId, Integer count);
 }
 
 
