@@ -23,7 +23,7 @@
     <select id="queryAllByDistributorUsername" resultMap="BaseResultMap">
         SELECT *
         FROM distributor
-        WHERE distributor_name = #distributorName
+        WHERE enable AND distributor_name = #distributorName
     </select>
 
     <delete id="deleteByDistributorId">

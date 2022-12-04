@@ -2,12 +2,14 @@ package com.gdutdb.carsales.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gdutdb.carsales.po.dto.CommonResult;
+import com.gdutdb.carsales.po.poja.Distributor;
 import com.gdutdb.carsales.po.poja.Staff;
 import com.gdutdb.carsales.service.StaffService;
 import com.gdutdb.carsales.mapper.StaffMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Objects;
 
 /**
  *
@@ -21,6 +23,18 @@ public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff>
     @Override
     public CommonResult queryAll() {
         return CommonResult.successResult(staffMapper.queryAllByEnable());
+    }
+
+    @Override
+    public CommonResult login(String username, String password) {
+        Staff staff = staffMapper.queryAllByStaffName(username);
+        if (Objects.isNull(staff)){
+            return CommonResult.failResult("用户不存在");
+        }
+        if (!staff.getStaffPassword().equals(password)){
+            return CommonResult.failResult("用户名或密码错误");
+        }
+        return CommonResult.successResult();
     }
 
     @Override

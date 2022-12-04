@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface StaffMapper extends BaseMapper<Staff> {
     List<StaffDetail> queryAllByEnable();
+    Staff queryAllByStaffName(String staffName);
     List<StaffDetail> queryByDistributorId(Integer distributorId);
     Integer deleteByStaffId(Integer staffId);
 }

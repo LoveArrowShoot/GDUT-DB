@@ -49,6 +49,13 @@
         WHERE d.enable AND staff.staff_distributor_id = #distributorId
     </select>
 
+    <select id="queryAllByStaffName" resultType="com.gdutdb.carsales.po.poja.Staff">
+        SELECT *
+        FROM staff
+        WHERE staff.enable
+            AND staff_name = #staffName
+    </select>
+
     <update id="deleteByStaffId" parameterType="integer">
         UPDATE staff
         SET enable = false
