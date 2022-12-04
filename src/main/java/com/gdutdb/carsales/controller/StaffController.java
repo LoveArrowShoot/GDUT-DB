@@ -13,10 +13,6 @@ public class StaffController {
     @Resource
     private StaffService staffService;
 
-    //TODO 登陆功能
-
-    //TODO 经销商只能看见并修改属于自己的职工
-
     // 新增和修改
     @PostMapping
     public boolean save(@RequestBody Staff staff) {

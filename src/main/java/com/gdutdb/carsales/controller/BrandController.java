@@ -26,7 +26,7 @@ public class BrandController {
     // 查询所有数据
     @GetMapping
     public CommonResult findAll() {
-        return CommonResult.successResult(brandService.list());
+        return brandService.queryAllByEnable();
     }
 
     @DeleteMapping("/{id}")

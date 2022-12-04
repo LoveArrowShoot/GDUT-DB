@@ -21,6 +21,11 @@ public class DistributorServiceImpl extends ServiceImpl<DistributorMapper, Distr
     DistributorMapper distributorMapper;
 
     @Override
+    public CommonResult queryAllByEnable() {
+        return CommonResult.successResult(distributorMapper.queryAllByEnable());
+    }
+
+    @Override
     public CommonResult login(String username, String password) {
         Distributor distributor = distributorMapper.queryAllByDistributorUsername(username);
         if (Objects.isNull(distributor)){

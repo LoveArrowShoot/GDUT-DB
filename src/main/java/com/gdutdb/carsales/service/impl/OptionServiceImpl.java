@@ -20,6 +20,11 @@ public class OptionServiceImpl extends ServiceImpl<OptionMapper, Option>
     OptionMapper optionMapper;
 
     @Override
+    public CommonResult queryAllByEnable() {
+        return CommonResult.successResult(optionMapper.queryAllByEnable());
+    }
+
+    @Override
     public CommonResult deleteByOptionId(Integer optionId) {
         return optionMapper.deleteByOptionId(optionId) > 0 ? CommonResult.successResult() : CommonResult.failResult();
     }

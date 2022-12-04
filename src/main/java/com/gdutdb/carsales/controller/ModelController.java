@@ -23,7 +23,7 @@ public class ModelController {
     // 查询所有数据
     @GetMapping
     public CommonResult findAll() {
-        return CommonResult.successResult(modelService.queryAll());
+        return modelService.queryAll();
     }
 
     @GetMapping("/{id}")

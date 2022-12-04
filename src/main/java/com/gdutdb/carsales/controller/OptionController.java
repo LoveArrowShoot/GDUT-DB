@@ -22,7 +22,7 @@ public class OptionController {
     // 查询所有数据
     @GetMapping
     public CommonResult findAll() {
-        return CommonResult.successResult(optionService.list());
+        return optionService.queryAllByEnable();
     }
 
     @DeleteMapping("/{id}")

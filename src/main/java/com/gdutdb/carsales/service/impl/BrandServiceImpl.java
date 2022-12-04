@@ -20,6 +20,11 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand>
     BrandMapper brandMapper;
 
     @Override
+    public CommonResult queryAllByEnable() {
+        return CommonResult.successResult(brandMapper.queryAllByEnable());
+    }
+
+    @Override
     public CommonResult deleteById(Integer brandId) {
         return brandMapper.deleteByBrandId(brandId) > 0 ? CommonResult.successResult() : CommonResult.failResult("更新失败");
     }

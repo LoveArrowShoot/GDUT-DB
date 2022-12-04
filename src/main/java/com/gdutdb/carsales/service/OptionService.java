@@ -8,5 +8,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  *
  */
 public interface OptionService extends IService<Option> {
+    CommonResult queryAllByEnable();
     CommonResult deleteByOptionId(Integer optionId);
 }

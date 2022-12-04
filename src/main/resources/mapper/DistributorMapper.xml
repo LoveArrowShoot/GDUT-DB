@@ -20,6 +20,13 @@
         enable
     </sql>
 
+    <select id="queryAllByEnable" resultType="com.gdutdb.carsales.po.poja.Distributor">
+        SELECT *
+        FROM distributor
+        WHERE enable
+    </select>
+
+
     <select id="queryAllByDistributorUsername" resultMap="BaseResultMap">
         SELECT *
         FROM distributor

@@ -30,8 +30,8 @@ public class DistributorController {
 
     // 查询所有数据
     @GetMapping
-    public List<Distributor> findAll() {
-        return distributorService.list();
+    public CommonResult findAll() {
+        return distributorService.queryAllByEnable();
     }
 
 
