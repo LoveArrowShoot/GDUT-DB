@@ -20,6 +20,17 @@ public class StaffController {
         return staffService.save(staff);
     }
 
+    @GetMapping("/login")
+    public CommonResult login(@RequestParam String username, @RequestParam String password){
+        return staffService.login(username, password);
+    }
+
+    @PostMapping("/register")
+    public CommonResult register(@RequestBody Staff staff){
+        return staffService.register(staff);
+    }
+
+
     // 查询所有数据
     @GetMapping
     public CommonResult findAll() {

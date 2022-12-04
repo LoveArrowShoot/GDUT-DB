@@ -13,6 +13,8 @@ public interface DistributorService extends IService<Distributor> {
     CommonResult queryAllByEnable();
 
     CommonResult login(String username, String password);
+
+    CommonResult register(Distributor distributor);
     /**
      * 伪删除
      * @param distributorId 供应商id

@@ -21,6 +21,11 @@ public class DistributorController {
         return distributorService.login(username, password);
     }
 
+    @PostMapping("/register")
+    public CommonResult register(@RequestBody Distributor distributor){
+        return distributorService.register(distributor);
+    }
+
     // 新增和修改
     @PostMapping
     public boolean save(@RequestBody Distributor distributor) {

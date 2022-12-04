@@ -38,6 +38,16 @@ public class DistributorServiceImpl extends ServiceImpl<DistributorMapper, Distr
     }
 
     @Override
+    public CommonResult register(Distributor distributor) {
+        Distributor distributor1 = distributorMapper.queryAllByDistributorUsername(distributor.getDistributorName());
+        if (Objects.nonNull(distributor1)){
+            return CommonResult.failResult("用户名已存在");
+        }
+        distributorMapper.insert(distributor);
+        return CommonResult.successResult();
+    }
+
+    @Override
     public CommonResult deleteByDistributorId(Integer distributorId) {
         return distributorMapper.deleteByDistributorId(distributorId) > 0 ? CommonResult.successResult() : CommonResult.failResult("删除失败");
     }
