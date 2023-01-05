@@ -2,6 +2,7 @@ package com.gdutdb.carsales.controller;
 
 import com.gdutdb.carsales.po.dto.CommonResult;
 import com.gdutdb.carsales.po.poja.Option;
+import com.gdutdb.carsales.service.ModelService;
 import com.gdutdb.carsales.service.OptionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,8 @@ public class OptionController {
     @Resource
     private OptionService optionService;
 
+    @Resource
+    private ModelService modelService;
     // 新增和修改
     @PostMapping
     public boolean save(@RequestBody Option option) {
@@ -28,6 +31,11 @@ public class OptionController {
     @DeleteMapping("/{id}")
     public CommonResult delete(@PathVariable Integer id) {
         return optionService.deleteByOptionId(id);
+    }
+
+    @GetMapping("/model/{id}")
+    public CommonResult queryOptionOfModel(@PathVariable Integer id){
+        return modelService.queryOptionOfModel(id);
     }
 
     @PostMapping("/del/batch")

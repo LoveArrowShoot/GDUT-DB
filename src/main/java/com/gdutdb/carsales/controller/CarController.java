@@ -23,10 +23,13 @@ public class CarController {
         @Resource
         private CarOptionService carOptionService;
 
+        @Resource
+        private ModelService modelService;
+
         // 新增和修改
         @PostMapping
         public CommonResult save(@RequestBody Car car) {
-            return carService.save(car)?CommonResult.successResult():CommonResult.failResult("更新车辆信息失败");
+            return carService.addCar(car);
         }
 
         //修改这个车所具有的选项
@@ -46,14 +49,13 @@ public class CarController {
             //根据获取的选项id找到选项
             List<Option> option = (List<Option>) carService.queryOptionOfCar(id).getData();
             //获取该车已有的选项的id
-            List<Integer> carOption = carOptionService.list(new QueryWrapper<CarOption>().eq("car_vin", id)).
-                                            stream().map(CarOption::getOptionId).collect(Collectors.toList());
+            List<Integer> carModelOption = (List<Integer>) modelService.queryOptionOfModel(id).getData();
 
             //采用该数据包装选项对象以及该选项对象是否被该车使用的判断
             List<OptionData> optionData=new ArrayList<>();
             for (Option a:option) {
                 //如果该选项被当前的车使用，则标记位置为1
-                optionData.add(new OptionData(a, (carOption.contains(a.getOptionId()))?1:0 ));
+                optionData.add(new OptionData(a, (carModelOption.contains(a.getOptionId()))?1:0 ));
             }
             return CommonResult.successResult(optionData);
         }
