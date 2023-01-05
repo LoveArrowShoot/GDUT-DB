@@ -31,11 +31,13 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car>
 
     @Override
     public CommonResult addCar(Car car) {
-        Inventory inventory = inventoryMapper.queryByCarVin(car.getCarVin());
+
+        Inventory inventory = inventoryMapper.queryByDistributorId(car.getCarDistributorId());
         if (Objects.isNull(inventory)){
             inventoryService.save(new Inventory(null, car.getCarModelId(), car.getCarDistributorId(),0));
-            inventory = inventoryMapper.queryByCarVin(car.getCarVin());
+            inventory = inventoryMapper.queryByDistributorId(car.getCarDistributorId());
         }
+
         if(inventoryMapper.changeCount(
                 inventory.getInventoryId(),
                 1
@@ -43,10 +45,10 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car>
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return CommonResult.failResult("库存变化失败");
         }
+
         if (!save(car)){
             CommonResult.failResult("保存车辆信息失败");
         }
-
         return CommonResult.successResult();
     }
 
