@@ -3,6 +3,7 @@ package com.gdutdb.carsales.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gdutdb.carsales.mapper.InventoryMapper;
 import com.gdutdb.carsales.po.dto.CommonResult;
+import com.gdutdb.carsales.po.dto.InventoryDetail;
 import com.gdutdb.carsales.po.poja.Car;
 import com.gdutdb.carsales.po.poja.Inventory;
 import com.gdutdb.carsales.service.CarService;
@@ -32,7 +33,7 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car>
     @Override
     public CommonResult addCar(Car car) {
 
-        Inventory inventory = inventoryMapper.queryByDistributorId(car.getCarDistributorId());
+        InventoryDetail inventory = inventoryMapper.queryByDistributorId(car.getCarDistributorId());
         if (Objects.isNull(inventory)){
             inventoryService.save(new Inventory(null, car.getCarModelId(), car.getCarDistributorId(),0));
             inventory = inventoryMapper.queryByDistributorId(car.getCarDistributorId());
