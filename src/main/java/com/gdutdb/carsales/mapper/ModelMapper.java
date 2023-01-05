@@ -15,6 +15,7 @@ public interface ModelMapper extends BaseMapper<Model> {
     Integer deleteOptionByModelId(Integer modelId);
     List<ModelDetail> queryAll();
     ModelDetail queryByModelId(Integer modelId);
+    Model queryByCarvVin(Integer carVin);
     List<Option> queryOptionOfModel(Integer modelId);
 }
 

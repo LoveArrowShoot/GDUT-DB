@@ -47,6 +47,13 @@
         WHERE model_id = #{modelId}
     </select>
 
+    <select id="queryByCarvVin" resultType="com.gdutdb.carsales.po.poja.Model">
+        SELECT *
+        FROM model
+            LEFT JOIN car c on model.model_id = c.car_model_id
+        WHERE car_vin = #{carVin}
+    </select>
+
 
     <update id="deleteByModelId" parameterType="integer">
         UPDATE model

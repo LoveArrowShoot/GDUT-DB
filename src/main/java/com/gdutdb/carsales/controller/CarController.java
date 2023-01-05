@@ -50,14 +50,16 @@ public class CarController {
         public CommonResult findOption(@PathVariable Integer id){
             //根据获取的选项id找到选项
             List<Option> option = (List<Option>) carService.queryOptionOfCar(id).getData();
+
+            Model model = (Model) modelService.queryByCarvVin(id).getData();
             //获取该车已有的选项的id
-            List<Integer> carModelOption = (List<Integer>) modelService.queryOptionOfModel(id).getData();
+            List<Option> carModelOption = (List<Option>) modelService.queryOptionOfModel(model.getModelId()).getData();
 
             //采用该数据包装选项对象以及该选项对象是否被该车使用的判断
             List<OptionData> optionData=new ArrayList<>();
-            for (Option a:option) {
+            for (Option a:carModelOption) {
                 //如果该选项被当前的车使用，则标记位置为1
-                optionData.add(new OptionData(a, (carModelOption.contains(a.getOptionId()))?1:0 ));
+                optionData.add(new OptionData(a, (optionContains(a, option)?1:0 )));
             }
             return CommonResult.successResult(optionData);
         }
@@ -114,4 +116,14 @@ public class CarController {
             queryWrapper.orderByDesc("car_vin");
             return CommonResult.successResult(carService.page(page, queryWrapper));
         }
+
+        public Boolean optionContains(Option option, List<Option> options){
+            for (Option ignored : options) {
+                if (ignored.getOptionId().equals(option.getOptionId())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 }

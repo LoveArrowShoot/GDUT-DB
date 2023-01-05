@@ -44,6 +44,11 @@ public class ModelServiceImpl extends ServiceImpl<ModelMapper, Model>
     }
 
     @Override
+    public CommonResult queryByCarvVin(Integer carVin) {
+        return CommonResult.successResult(modelMapper.queryByCarvVin(carVin));
+    }
+
+    @Override
     public CommonResult deleteByModelId(Integer modelId) {
         return modelMapper.deleteByModelId(modelId) > 0 ? CommonResult.successResult() : CommonResult.failResult("删除失败");
     }
