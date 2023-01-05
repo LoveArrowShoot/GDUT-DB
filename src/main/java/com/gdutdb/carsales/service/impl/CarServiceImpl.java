@@ -10,6 +10,7 @@ import com.gdutdb.carsales.service.CarService;
 import com.gdutdb.carsales.mapper.CarMapper;
 import com.gdutdb.carsales.service.InventoryService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.annotation.Resource;
@@ -31,6 +32,7 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car>
     InventoryService inventoryService;
 
     @Override
+    @Transactional
     public CommonResult addCar(Car car) {
 
         InventoryDetail inventory = inventoryMapper.queryByDistributorId(car.getCarDistributorId());
