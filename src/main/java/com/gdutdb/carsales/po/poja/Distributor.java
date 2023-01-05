@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -16,6 +17,7 @@ import lombok.Data;
 @TableName(value ="distributor")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Distributor implements Serializable {
     /**
      * 经销商编号

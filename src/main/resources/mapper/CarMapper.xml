@@ -40,14 +40,14 @@
         SELECT *
         FROM car
              LEFT JOIN model m on car_model_id = m.model_id
-        WHERE car.enable AND car.car_model_id = #modelId
+        WHERE car.enable AND car.car_model_id = #{modelId}
     </select>
 
     <select id="queryByDistributorId" parameterType="integer">
         SELECT *
         FROM car
                  LEFT JOIN model m on car_model_id = m.model_id
-        WHERE car.enable AND car.car_distributor_id = #distributorId
+        WHERE car.enable AND car.car_distributor_id = #{distributorId}
     </select>
 
     <select id="queryByDistributorIdAndBrandId" parameterType="integer">
@@ -55,20 +55,20 @@
         FROM car
                  LEFT JOIN model m on car_model_id = m.model_id
         WHERE car.enable
-          AND car.car_distributor_id = #distributorId
-          AND car.car_model_id = #modelId
+          AND car.car_distributor_id = #{distributorId}
+          AND car.car_model_id = #{modelId}
     </select>
 
     <select id="queryOptionOfCar" parameterType="integer" resultMap="com.gdutdb.carsales.mapper.OptionMapper.BaseResultMap">
         SELECT *
         FROM `car_option`
                  LEFT JOIN `option` o on o.option_id = car_option.option_id
-        WHERE car_vin = #carVin
+        WHERE car_vin = #{carVin}
     </select>
 
     <update id="deleteByCarVin" parameterType="integer">
         UPDATE car
         SET car.enable = false
-        WHERE car.car_vin = #carVin
+        WHERE car.car_vin = #{carVin}
     </update>
 </mapper>

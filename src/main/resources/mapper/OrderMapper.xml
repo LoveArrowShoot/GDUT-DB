@@ -54,7 +54,7 @@
         FROM `order`
                  LEFT JOIN car c on c.car_vin = `order`.order_vin
                  LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
-        WHERE `order`.order_staff_id = #staffId
+        WHERE `order`.order_staff_id = #{staffId}
     </select>
 
     <select id="queryByCarVin" resultMap="OrderDetailMap">
@@ -62,7 +62,7 @@
         FROM `order`
                  LEFT JOIN car c on c.car_vin = `order`.order_vin
                  LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
-        WHERE `order`.order_vin = #carVin
+        WHERE `order`.order_vin = #{carVin}
     </select>
 
     <select id="queryByDistributorId" resultMap="OrderDetailMap">
@@ -71,7 +71,7 @@
                  LEFT JOIN car c on c.car_vin = `order`.order_vin
                  LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
                  LEFT JOIN distributor d on s.staff_distributor_id = d.distributor_id
-        WHERE d.distributor_id = #distributorId
+        WHERE d.distributor_id = #{distributorId}
     </select>
 
 </mapper>

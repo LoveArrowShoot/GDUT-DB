@@ -56,25 +56,25 @@
         FROM inventory i
                  LEFT JOIN model m ON i.inventory_model_id = m.model_id
                  LEFT JOIN distributor d on i.inventory_distributor_id = d.distributor_id
-        WHERE i.inventory_distributor_id = #distributorId
+        WHERE i.inventory_distributor_id = #{distributorId}
     </select>
 
     <delete id="deleteByInventoryId" parameterType="integer">
         DELETE
         FROM inventory i
-        WHERE i.inventory_id = #InventoryId
+        WHERE i.inventory_id = #{InventoryId}
     </delete>
 
     <update id="updateCount" parameterType="integer">
         UPDATE inventory i
-        SET i.inventory_count = #count
-        WHERE i.inventory_id = #InventoryId
+        SET i.inventory_count = #{count}
+        WHERE i.inventory_id = #{InventoryId}
     </update>
 
     <update id="changeCount" parameterType="integer">
         UPDATE inventory i
-        SET i.inventory_count = i.inventory_count + #changeCount
-        WHERE i.inventory_id = #InventoryId
+        SET i.inventory_count = i.inventory_count + #{changeCount}
+        WHERE i.inventory_id = #{InventoryId}
     </update>
 
 </mapper>

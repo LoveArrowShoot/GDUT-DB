@@ -46,19 +46,19 @@
         SELECT *
         FROM staff
                  LEFT JOIN distributor d on d.distributor_id = staff.staff_distributor_id
-        WHERE d.enable AND staff.staff_distributor_id = #distributorId
+        WHERE d.enable AND staff.staff_distributor_id = #{distributorId}
     </select>
 
     <select id="queryAllByStaffName" resultType="com.gdutdb.carsales.po.poja.Staff">
         SELECT *
         FROM staff
         WHERE staff.enable
-            AND staff_name = #staffName
+            AND staff_name = #{staffName}
     </select>
 
     <update id="deleteByStaffId" parameterType="integer">
         UPDATE staff
         SET enable = false
-        WHERE staff_id = #staffId
+        WHERE staff_id = #{staffId}
     </update>
 </mapper>

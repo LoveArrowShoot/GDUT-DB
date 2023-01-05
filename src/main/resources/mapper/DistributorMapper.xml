@@ -32,12 +32,12 @@
     <select id="queryAllByDistributorUsername" resultMap="BaseResultMap">
         SELECT *
         FROM distributor
-        WHERE enable AND distributor_name = #distributorName
+        WHERE enable AND distributor_name = #{distributorName}
     </select>
 
     <delete id="deleteByDistributorId">
         UPDATE distributor
         SET distributor.enable = false
-        WHERE distributor.distributor_id = #distributorId
+        WHERE distributor.distributor_id = #{distributorId}
     </delete>
 </mapper>

@@ -17,7 +17,7 @@
     <update id="deleteByOptionId">
         UPDATE `option`
         SET `option`.enable = false
-        WHERE option_id = #optionId
+        WHERE option_id = #{optionId}
     </update>
     <select id="queryAllByEnable" resultType="com.gdutdb.carsales.po.poja.Option">
         SELECT *

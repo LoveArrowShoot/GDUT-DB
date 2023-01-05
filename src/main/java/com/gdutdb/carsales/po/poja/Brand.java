@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -16,6 +17,7 @@ import lombok.Data;
 @TableName(value ="brand")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Brand implements Serializable {
     /**
      * 品牌编号

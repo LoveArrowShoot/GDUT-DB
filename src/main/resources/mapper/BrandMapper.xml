@@ -17,7 +17,7 @@
     <update id="deleteByBrandId">
         UPDATE brand
         SET brand.enable = false
-        WHERE brand.brand_id = #brandId
+        WHERE brand.brand_id = #{brandId}
     </update>
 
     <select id="queryAllByEnable" resultType="com.gdutdb.carsales.po.poja.Brand">

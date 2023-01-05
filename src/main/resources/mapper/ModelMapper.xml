@@ -37,26 +37,26 @@
         SELECT *
         FROM model
             LEFT JOIN brand ON brand.brand_id = model.model_brand_id
-        WHERE model.enable AND model.model_id = #modelId
+        WHERE model.enable AND model.model_id = #{modelId}
     </select>
 
     <select id="queryOptionOfModel" parameterType="integer" resultMap="com.gdutdb.carsales.mapper.OptionMapper.BaseResultMap">
         SELECT *
         FROM `model_option`
             LEFT JOIN `option` o on o.option_id = model_option.option_id
-        WHERE model_id = #modelId
+        WHERE model_id = #{modelId}
     </select>
 
 
     <update id="deleteByModelId" parameterType="integer">
         UPDATE model
         SET model.enable = false
-        WHERE model.model_id = #modelId
+        WHERE model.model_id = #{modelId}
     </update>
 
     <update id="deleteOptionByModelId" parameterType="integer">
         DELETE
         FROM model_option
-        WHERE model_option.model_id = #modelId
+        WHERE model_option.model_id = #{modelId}
     </update>
 </mapper>

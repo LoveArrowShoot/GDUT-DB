@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -16,6 +17,7 @@ import lombok.Data;
 @TableName(value ="model_option")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ModelOption implements Serializable {
     /**
      * 选项id
