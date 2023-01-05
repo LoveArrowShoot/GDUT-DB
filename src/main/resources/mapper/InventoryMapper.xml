@@ -62,19 +62,19 @@
     <delete id="deleteByInventoryId" parameterType="integer">
         DELETE
         FROM inventory i
-        WHERE i.inventory_id = #{InventoryId}
+        WHERE i.inventory_id = #{inventoryId}
     </delete>
 
-    <update id="updateCount" parameterType="integer">
+    <update id="updateCount" >
         UPDATE inventory i
         SET i.inventory_count = #{count}
-        WHERE i.inventory_id = #{InventoryId}
+        WHERE i.inventory_id = #{inventoryId}
     </update>
 
-    <update id="changeCount" parameterType="integer">
+    <update id="changeCount" >
         UPDATE inventory i
-        SET i.inventory_count = i.inventory_count + #{changeCount}
-        WHERE i.inventory_id = #{InventoryId}
+        SET i.inventory_count = i.inventory_count + #{count}
+        WHERE i.inventory_id = #{inventoryId}
     </update>
 
 </mapper>
