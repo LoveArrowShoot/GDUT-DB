@@ -17,6 +17,7 @@ public interface CarMapper extends BaseMapper<Car> {
     List<CarDetail> queryByDistributorId(Integer distributorId);
     List<CarDetail> queryByDistributorIdAndBrandId(Integer distributorId, Integer brandId);
     Integer deleteByCarVin(Integer carVin);
+    Integer deleteCarOption(Integer carVin);
 }
 
 

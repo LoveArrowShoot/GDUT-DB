@@ -34,6 +34,12 @@
     </resultMap>
 
 
+    <delete id="deleteCarOption">
+        DELETE
+        FROM car_option
+        WHERE car_vin = #{carVin}
+    </delete>
+
     <select id="queryAllByEnable" resultMap="CarDetailMap">
         SELECT *
         FROM car

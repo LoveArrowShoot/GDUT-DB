@@ -84,6 +84,11 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car>
     public CommonResult deleteByCarVin(Integer carVin) {
         return carMapper.deleteByCarVin(carVin) > 0 ? CommonResult.successResult() : CommonResult.failResult("删除失败");
     }
+
+    @Override
+    public CommonResult deleteCarOption(Integer carVin) {
+        return carMapper.deleteCarOption(carVin) > 0 ? CommonResult.successResult() : CommonResult.failResult("删除失败");
+    }
 }
 
 
