@@ -17,7 +17,7 @@ public class Order implements Serializable {
     /**
      * 订单编号
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer orderId;
 
     /**

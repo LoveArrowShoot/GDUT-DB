@@ -31,7 +31,10 @@ public class DistributorController {
     @PostMapping
     public CommonResult save(@RequestBody Distributor distributor) {
         // 新增或者更新
-        return distributorService.saveDistributor(distributor);
+        if (distributorService.save(distributor)){
+            return CommonResult.successResult();
+        }
+        return CommonResult.failResult();
     }
 
     // 查询所有数据

@@ -22,7 +22,7 @@ public class Option implements Serializable {
     /**
      * 选项id
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer optionId;
 
     /**

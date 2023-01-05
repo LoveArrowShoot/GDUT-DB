@@ -20,7 +20,7 @@ public class Distributor implements Serializable {
     /**
      * 经销商编号
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer distributorId;
 
     /**

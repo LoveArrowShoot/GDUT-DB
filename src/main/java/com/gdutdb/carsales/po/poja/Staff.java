@@ -17,7 +17,7 @@ public class Staff implements Serializable {
     /**
      * 销售人员编号
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer staffId;
 
     /**

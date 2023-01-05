@@ -17,7 +17,7 @@ public class Model implements Serializable {
     /**
      * 模型编号
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer modelId;
 
     /**

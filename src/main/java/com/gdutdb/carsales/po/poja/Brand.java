@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -13,11 +15,12 @@ import lombok.Data;
  */
 @TableName(value ="brand")
 @Data
+@AllArgsConstructor
 public class Brand implements Serializable {
     /**
      * 品牌编号
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer brandId;
 
     /**

@@ -17,7 +17,7 @@ public class Car implements Serializable {
     /**
      * 车辆标识号
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer carVin;
 
     /**

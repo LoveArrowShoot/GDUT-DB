@@ -10,8 +10,6 @@ import java.util.List;
  */
 public interface DistributorMapper extends BaseMapper<Distributor> {
 
-    Integer saveDistributor(Distributor distributor);
-
     List<Distributor> queryAllByEnable();
 
     Distributor queryAllByDistributorUsername(String distributorName);
