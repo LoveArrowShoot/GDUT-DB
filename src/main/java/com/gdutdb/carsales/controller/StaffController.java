@@ -1,7 +1,9 @@
 package com.gdutdb.carsales.controller;
 
 import com.gdutdb.carsales.po.dto.CommonResult;
+import com.gdutdb.carsales.po.poja.Order;
 import com.gdutdb.carsales.po.poja.Staff;
+import com.gdutdb.carsales.service.OrderService;
 import com.gdutdb.carsales.service.StaffService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +16,21 @@ public class StaffController {
     @Resource
     private StaffService staffService;
 
+    @Resource
+    OrderService orderService;
+
+    // 销售 即创建订单
+    @PostMapping("/sale")
+    public CommonResult saleCar(@RequestBody Order order) {
+        return orderService.saleCar(order);
+    }
+
     // 新增和修改
     @PostMapping
-    public boolean save(@RequestBody Staff staff) {
+    public CommonResult save(@RequestBody Staff staff) {
+        staffService.save(staff);
         // 新增或者更新
-        return staffService.save(staff);
+        return CommonResult.successResult();
     }
 
     @GetMapping("/login")

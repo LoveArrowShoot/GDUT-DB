@@ -28,6 +28,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
     @Override
     @Transactional
     public CommonResult saleCar(Order order) {
+        save(order);
         if(inventoryMapper.changeCount(
                 inventoryMapper.queryByCarVin(order.getOrderVin()).getInventoryId(),
                 -1) <= 0){

@@ -34,7 +34,7 @@ public class DistributorServiceImpl extends ServiceImpl<DistributorMapper, Distr
         if (!distributor.getDistributorPassword().equals(password)){
             return CommonResult.failResult("用户名或密码错误");
         }
-        return CommonResult.successResult();
+        return CommonResult.successResult(distributor);
     }
 
     @Override

@@ -18,17 +18,17 @@ public class OrderController {
     @Resource
     OrderService orderService;
 
-    @PostMapping
-    public boolean save(@RequestBody Order order) {
-        // 新增或者更新
-        return orderService.save(order);
-    }
+//    @PostMapping
+//    public boolean save(@RequestBody Order order) {
+//        // 新增或者更新
+//        return orderService.save(order);
+//    }
 
     // 新增和修改
     @PostMapping("/sale")
-    public boolean saleCar(@RequestBody Order order) {
+    public CommonResult saleCar(@RequestBody Order order) {
         // 新增或者更新
-        return orderService.save(order);
+        return orderService.saleCar(order);
     }
     // 查询所有数据
     @GetMapping

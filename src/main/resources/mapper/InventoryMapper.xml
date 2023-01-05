@@ -22,7 +22,7 @@
         <result property="modelDetail.modelId" column="inventory_model_id"/>
         <result property="modelDetail.modelName" column="model_name"/>
         <result property="modelDetail.modelBrandId" column="model_brand_id"/>
-        <result property="modelDetail.brandName" column="brand_name"/>
+        <result property="modelDetail.brand.brandName" column="brand_name"/>
 
         <result property="distributor.distributorId" column="inventory_distributor_id" jdbcType="INTEGER"/>
         <result property="distributor.distributorName" column="distributor_name" jdbcType="VARCHAR"/>

@@ -23,37 +23,50 @@
         <result property="carModelId" column="car_model_id" jdbcType="INTEGER"/>
         <result property="enable" column="enable" jdbcType="BOOLEAN"/>
 
-        <result property="brand.brandId" column="brand_id" jdbcType="INTEGER"/>
-        <result property="brand.brandName" column="brand_name" jdbcType="VARCHAR"/>
-        <result property="brand.enable" column="enable" jdbcType="BOOLEAN"/>
+        <result property="distributor.distributorId" column="distributor_id" jdbcType="INTEGER"/>
+        <result property="distributor.distributorName" column="distributor_name" jdbcType="INTEGER"/>
+
+        <result property="modelDetail.modelBrandId" column="model_id" jdbcType="INTEGER"/>
+        <result property="modelDetail.modelName" column="model_name" jdbcType="VARCHAR"/>
+
+        <result property="modelDetail.brand.brandId" column="brand_id" jdbcType="INTEGER"/>
+        <result property="modelDetail.brand.brandName" column="brand_name" jdbcType="VARCHAR"/>
     </resultMap>
 
 
-    <select id="queryAllByEnable">
+    <select id="queryAllByEnable" resultMap="CarDetailMap">
         SELECT *
         FROM car
             LEFT JOIN model m on car_model_id = m.model_id
+            LEFT JOIN distributor d on car.car_distributor_id = d.distributor_id
+            LEFT JOIN brand b on m.model_brand_id = b.brand_id
         WHERE car.enable
     </select>
 
-    <select id="queryByModelId" parameterType="integer">
+    <select id="queryByModelId" parameterType="integer" resultMap="CarDetailMap">
         SELECT *
         FROM car
-             LEFT JOIN model m on car_model_id = m.model_id
+            LEFT JOIN model m on car_model_id = m.model_id
+            LEFT JOIN distributor d on car.car_distributor_id = d.distributor_id
+            LEFT JOIN brand b on m.model_brand_id = b.brand_id
         WHERE car.enable AND car.car_model_id = #{modelId}
     </select>
 
-    <select id="queryByDistributorId" parameterType="integer">
+    <select id="queryByDistributorId" parameterType="integer" resultMap="CarDetailMap">
         SELECT *
         FROM car
-                 LEFT JOIN model m on car_model_id = m.model_id
+            LEFT JOIN model m on car_model_id = m.model_id
+            LEFT JOIN distributor d on car.car_distributor_id = d.distributor_id
+            LEFT JOIN brand b on m.model_brand_id = b.brand_id
         WHERE car.enable AND car.car_distributor_id = #{distributorId}
     </select>
 
-    <select id="queryByDistributorIdAndBrandId" parameterType="integer">
+    <select id="queryByDistributorIdAndBrandId" parameterType="integer" resultMap="CarDetailMap">
         SELECT *
         FROM car
                  LEFT JOIN model m on car_model_id = m.model_id
+                 LEFT JOIN distributor d on car.car_distributor_id = d.distributor_id
+                 LEFT JOIN brand b on m.model_brand_id = b.brand_id
         WHERE car.enable
           AND car.car_distributor_id = #{distributorId}
           AND car.car_model_id = #{modelId}

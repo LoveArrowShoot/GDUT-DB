@@ -33,7 +33,7 @@ public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff>
         if (!staff.getStaffPassword().equals(password)){
             return CommonResult.failResult("用户名或密码错误");
         }
-        return CommonResult.successResult();
+        return CommonResult.successResult(staff);
     }
 
     @Override

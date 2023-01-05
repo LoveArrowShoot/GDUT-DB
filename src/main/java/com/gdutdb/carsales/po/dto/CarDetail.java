@@ -2,6 +2,7 @@ package com.gdutdb.carsales.po.dto;
 
 import com.gdutdb.carsales.po.poja.Brand;
 import com.gdutdb.carsales.po.poja.Car;
+import com.gdutdb.carsales.po.poja.Distributor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,5 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CarDetail extends Car {
-    private Brand brand;
+    private ModelDetail modelDetail;
+    private Distributor distributor;
 }
