@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
-
+@RestController
 @RequestMapping("/inventory")
 public class InventoryController {
     @Resource
@@ -25,8 +25,8 @@ public class InventoryController {
 
     // 查询所有数据
     @GetMapping
-    public CommonResult findAll(@RequestParam Integer id) {
-        return CommonResult.successResult(inventoryService.queryAll());
+    public CommonResult findAll() {
+        return inventoryService.queryAll();
     }
 
     @DeleteMapping("/{id}")

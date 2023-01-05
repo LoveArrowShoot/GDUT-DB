@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  *
  */
 public interface CarService extends IService<Car> {
+    CommonResult addCar(Car car);
     CommonResult queryAll();
     CommonResult queryByModelId(Integer modelId);
     CommonResult queryOptionOfCar(Integer carVin);
