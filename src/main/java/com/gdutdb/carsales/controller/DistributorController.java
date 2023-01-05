@@ -29,9 +29,9 @@ public class DistributorController {
 
     // 新增和修改
     @PostMapping
-    public boolean save(@RequestBody Distributor distributor) {
+    public CommonResult save(@RequestBody Distributor distributor) {
         // 新增或者更新
-        return distributorService.save(distributor);
+        return distributorService.saveDistributor(distributor);
     }
 
     // 查询所有数据

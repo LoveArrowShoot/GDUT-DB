@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 public interface DistributorService extends IService<Distributor> {
 
+    CommonResult saveDistributor(Distributor distributor);
+
     CommonResult queryAllByEnable();
 
     CommonResult login(String username, String password);

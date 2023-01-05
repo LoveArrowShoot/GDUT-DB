@@ -9,6 +9,9 @@ import java.util.List;
  * @Entity com.gdutdb.carsales.po.poja.Distributor
  */
 public interface DistributorMapper extends BaseMapper<Distributor> {
+
+    Integer saveDistributor(Distributor distributor);
+
     List<Distributor> queryAllByEnable();
 
     Distributor queryAllByDistributorUsername(String distributorName);

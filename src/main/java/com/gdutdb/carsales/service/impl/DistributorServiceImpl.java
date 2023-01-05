@@ -21,6 +21,14 @@ public class DistributorServiceImpl extends ServiceImpl<DistributorMapper, Distr
     DistributorMapper distributorMapper;
 
     @Override
+    public CommonResult saveDistributor(Distributor distributor) {
+        if(distributorMapper.saveDistributor(distributor) <= 0){
+            return CommonResult.failResult("创建供应商失败");
+        }
+        return CommonResult.successResult();
+    }
+
+    @Override
     public CommonResult queryAllByEnable() {
         return CommonResult.successResult(distributorMapper.queryAllByEnable());
     }

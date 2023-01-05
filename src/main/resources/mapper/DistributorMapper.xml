@@ -20,6 +20,12 @@
         enable
     </sql>
 
+    <insert id="saveDistributor">
+        INSERT INTO
+            distributor(distributor_name, distributor_username, distributor_phone, distributor_password, distributor_address)
+            VALUES(#distributorName, #distributorUsername, #distributorPhone, #distributorPassword, #distributorAddress)
+    </insert>
+
     <select id="queryAllByEnable" resultType="com.gdutdb.carsales.po.poja.Distributor">
         SELECT *
         FROM distributor
