@@ -27,11 +27,13 @@ public class ModelController {
         return modelService.queryAll();
     }
 
+    // 查询模型
     @GetMapping("/{id}")
     public CommonResult findByModelId(@PathVariable Integer id) {
         return CommonResult.successResult(modelService.queryByModelId(id));
     }
 
+    // 查询模型的所有选项
     @GetMapping("/{id}/option")
     public CommonResult queryOptionOfModel(@PathVariable Integer id){
         return modelService.queryOptionOfModel(id);

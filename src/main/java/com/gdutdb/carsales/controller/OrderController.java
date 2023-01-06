@@ -36,16 +36,19 @@ public class OrderController {
         return orderService.queryAll();
     }
 
+    // 查询销售人员负责的订单
     @GetMapping("/staff/{staffId}")
     public CommonResult queryByStaffId(@PathVariable Integer staffId) {
         return orderService.queryByStaffId(staffId);
     }
 
+    // 查询某辆车的订单
     @GetMapping("/car/{carVin}")
     public CommonResult queryByCarVin(@PathVariable Integer carVin) {
         return orderService.queryByCarVin(carVin);
     }
 
+    // 查询经销商
     @GetMapping("/distributor/{distributorId}")
     public CommonResult queryByDistributorId(@PathVariable Integer distributorId) {
         return orderService.queryByDistributorId(distributorId);

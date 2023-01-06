@@ -17,7 +17,7 @@
         <result property="modelBrandId" column="model_brand_id" jdbcType="INTEGER"/>
         <result property="enable" column="enable" jdbcType="BOOLEAN"/>
 
-        <result property="brandName" column="brand_name" jdbcType="VARCHAR"/>
+        <result property="brand.brandName" column="brand_name" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">

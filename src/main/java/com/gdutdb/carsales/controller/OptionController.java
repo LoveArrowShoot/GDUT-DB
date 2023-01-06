@@ -28,11 +28,13 @@ public class OptionController {
         return optionService.queryAllByEnable();
     }
 
+    // 删除选项
     @DeleteMapping("/{id}")
     public CommonResult delete(@PathVariable Integer id) {
         return optionService.deleteByOptionId(id);
     }
 
+    // 查询模型所有选项
     @GetMapping("/model/{id}")
     public CommonResult queryOptionOfModel(@PathVariable Integer id){
         return modelService.queryOptionOfModel(id);

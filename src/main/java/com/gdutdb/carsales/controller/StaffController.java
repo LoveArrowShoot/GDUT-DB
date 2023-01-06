@@ -33,6 +33,7 @@ public class StaffController {
         return CommonResult.successResult();
     }
 
+    // 登陆
     @GetMapping("/login")
     public CommonResult login(@RequestParam String username, @RequestParam String password){
         return staffService.login(username, password);
@@ -42,7 +43,6 @@ public class StaffController {
     public CommonResult register(@RequestBody Staff staff){
         return staffService.register(staff);
     }
-
 
     // 查询所有数据
     @GetMapping
