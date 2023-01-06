@@ -40,7 +40,7 @@ public class ModelController {
     }
 
     // 更新模型的选项
-    @Update("{modelId}/option")
+    @PutMapping("{modelId}/option")
     public CommonResult updateModelOption(@PathVariable Integer modelId, @RequestBody List<Integer> ids){
         return modelService.updateModelOption(modelId, ids);
     }
