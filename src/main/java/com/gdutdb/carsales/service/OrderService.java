@@ -11,6 +11,7 @@ import java.util.List;
  *
  */
 public interface OrderService extends IService<Order> {
+    CommonResult deleteById(Integer orderId);
     CommonResult queryAll();
     CommonResult queryByStaffId(Integer staffId);
     CommonResult queryByCarVin(Integer carVin);

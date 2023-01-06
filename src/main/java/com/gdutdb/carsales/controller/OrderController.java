@@ -55,8 +55,8 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable Integer id) {
-        return orderService.removeById(id);
+    public CommonResult delete(@PathVariable Integer id) {
+        return orderService.deleteById(id);
     }
 
     @PostMapping("/del/batch")

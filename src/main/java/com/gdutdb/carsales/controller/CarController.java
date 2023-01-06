@@ -84,7 +84,7 @@ public class CarController {
 
         @DeleteMapping("/{id}")
         public CommonResult delete(@PathVariable Integer id) {
-            return  carService.update(new UpdateWrapper<Car>().eq("car_vin",id).set("enable",1))
+            return  carService.update(new UpdateWrapper<Car>().eq("car_vin",id).set("enable",0))
                     ? CommonResult.successResult():CommonResult.failResult("删除失败");
         }
 

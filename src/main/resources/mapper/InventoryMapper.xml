@@ -70,8 +70,8 @@
 
     <delete id="deleteByInventoryId" parameterType="integer">
         DELETE
-        FROM inventory i
-        WHERE i.inventory_id = #{inventoryId}
+        FROM inventory
+        WHERE inventory_id = #{inventoryId}
     </delete>
 
     <update id="updateCount" >

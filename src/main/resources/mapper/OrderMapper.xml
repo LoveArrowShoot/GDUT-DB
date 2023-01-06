@@ -33,27 +33,63 @@
         <result property="carDetail.carModelId" column="car_model_id" jdbcType="INTEGER"/>
         <result property="carDetail.enable" column="enable" jdbcType="BOOLEAN"/>
 
-        <result property="carDetail.brand.brandId" column="brand_id" jdbcType="INTEGER"/>
-        <result property="carDetail.brand.brandName" column="brand_name" jdbcType="VARCHAR"/>
-        <result property="carDetail.brand.enable" column="enable" jdbcType="BOOLEAN"/>
+        <result property="carDetail.modelDetail.modelId" column="model_id" jdbcType="INTEGER"/>
+        <result property="carDetail.modelDetail.modelName" column="model_name" jdbcType="VARCHAR"/>
+        <result property="carDetail.modelDetail.modelBrandId" column="model_brand_id" jdbcType="INTEGER"/>
+
+        <result property="carDetail.modelDetail.brand.brandId" column="brand_id" jdbcType="INTEGER"/>
+        <result property="carDetail.modelDetail.brand.brandName" column="brand_name" jdbcType="VARCHAR"/>
+        <result property="carDetail.modelDetail.brand.enable" column="enable" jdbcType="BOOLEAN"/>
     </resultMap>
     <sql id="Base_Column_List">
         order_id,order_staff_id,order_customer_phone,
         order_money,order_vin,order_customer_name
     </sql>
+    <insert id="insertOrder">
+        INSERT
+        INTO `order`(
+                    order_id,
+                    order_staff_id,
+                    order_customer_phone,
+                    order_money,
+                    order_vin,
+                    order_customer_name
+            )
+            VALUES (
+                    #{orderId},
+                    #{orderStaffId},
+                    #{orderCustomerPhone},
+                    #{orderMoney},
+                    #{orderVin},
+                    #{orderCustomerName}
+           )
+
+
+    </insert>
+
+    <delete id="deleteOrder">
+        DELETE FROM `order`
+        WHERE order_id = #{orderId}
+    </delete>
 
     <select id="queryAll" resultMap="OrderDetailMap">
         SELECT *
         FROM `order`
             LEFT JOIN car c on c.car_vin = `order`.order_vin
+            LEFT JOIN model m ON c.car_model_id = m.model_id
+            LEFT JOIN brand b ON m.model_brand_id = b.brand_id
             LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
+            LEFT JOIN distributor d on d.distributor_id = s.staff_distributor_id
     </select>
 
     <select id="queryByStaffId" resultMap="OrderDetailMap">
         SELECT *
         FROM `order`
                  LEFT JOIN car c on c.car_vin = `order`.order_vin
+                 LEFT JOIN model m ON c.car_model_id = m.model_id
+                 LEFT JOIN brand b ON m.model_brand_id = b.brand_id
                  LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
+                 LEFT JOIN distributor d on d.distributor_id = s.staff_distributor_id
         WHERE `order`.order_staff_id = #{staffId}
     </select>
 
@@ -61,7 +97,10 @@
         SELECT *
         FROM `order`
                  LEFT JOIN car c on c.car_vin = `order`.order_vin
+                 LEFT JOIN model m ON c.car_model_id = m.model_id
+                 LEFT JOIN brand b ON m.model_brand_id = b.brand_id
                  LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
+                 LEFT JOIN distributor d on d.distributor_id = s.staff_distributor_id
         WHERE `order`.order_vin = #{carVin}
     </select>
 
@@ -69,8 +108,10 @@
         SELECT *
         FROM `order`
                  LEFT JOIN car c on c.car_vin = `order`.order_vin
+                 LEFT JOIN model m ON c.car_model_id = m.model_id
+                 LEFT JOIN brand b ON m.model_brand_id = b.brand_id
                  LEFT JOIN staff s on s.staff_id = `order`.order_staff_id
-                 LEFT JOIN distributor d on s.staff_distributor_id = d.distributor_id
+                 LEFT JOIN distributor d on d.distributor_id = s.staff_distributor_id
         WHERE d.distributor_id = #{distributorId}
     </select>
 
