@@ -39,6 +39,7 @@ public class ModelController {
         return modelService.queryOptionOfModel(id);
     }
 
+    // 更新模型的选项
     @Update("{modelId}/option")
     public CommonResult updateModelOption(@PathVariable Integer modelId, @RequestBody List<Integer> ids){
         return modelService.updateModelOption(modelId, ids);
