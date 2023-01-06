@@ -59,7 +59,7 @@ public class ModelServiceImpl extends ServiceImpl<ModelMapper, Model>
         //todo select forUpdate
         modelMapper.deleteOptionByModelId(modelId);
         for (Integer optionId : optionIds) {
-           if(modelOptionService.save(new ModelOption(modelId, optionId))) {
+           if(!modelOptionService.save(new ModelOption(modelId, optionId))) {
                TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                return CommonResult.failResult("更新失败");
            }

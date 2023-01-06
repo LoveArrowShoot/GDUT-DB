@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -41,8 +43,8 @@ public class ModelController {
 
     // 更新模型的选项
     @PutMapping("{modelId}/option")
-    public CommonResult updateModelOption(@PathVariable Integer modelId, @RequestBody List<Integer> ids){
-        return modelService.updateModelOption(modelId, ids);
+    public CommonResult updateModelOption(@PathVariable Integer modelId, @RequestBody Integer[] ids){
+        return modelService.updateModelOption(modelId, new ArrayList<Integer>(Arrays.asList(ids)));
     }
 
     @DeleteMapping("/{id}")
