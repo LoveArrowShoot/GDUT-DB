@@ -34,6 +34,11 @@
     </resultMap>
 
 
+
+    <insert id="insertOption">
+        INSERT INTO car_option(car_vin, option_id) VALUES (#{carVin}, #{optionId})
+    </insert>
+
     <delete id="deleteCarOption">
         DELETE
         FROM car_option

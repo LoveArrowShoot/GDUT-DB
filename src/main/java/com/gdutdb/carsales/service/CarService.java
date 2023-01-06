@@ -4,10 +4,13 @@ import com.gdutdb.carsales.po.dto.CommonResult;
 import com.gdutdb.carsales.po.poja.Car;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  *
  */
 public interface CarService extends IService<Car> {
+    CommonResult updateCarOption(Integer carVin, List<Integer> ids);
     CommonResult addCar(Car car);
     CommonResult queryAll();
     CommonResult queryByModelId(Integer modelId);

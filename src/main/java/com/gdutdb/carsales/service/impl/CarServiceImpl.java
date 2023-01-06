@@ -5,6 +5,7 @@ import com.gdutdb.carsales.mapper.InventoryMapper;
 import com.gdutdb.carsales.po.dto.CommonResult;
 import com.gdutdb.carsales.po.dto.InventoryDetail;
 import com.gdutdb.carsales.po.poja.Car;
+import com.gdutdb.carsales.po.poja.CarOption;
 import com.gdutdb.carsales.po.poja.Inventory;
 import com.gdutdb.carsales.service.CarService;
 import com.gdutdb.carsales.mapper.CarMapper;
@@ -14,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -30,6 +33,22 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, Car>
 
     @Resource
     InventoryService inventoryService;
+
+    @Override
+    @Transactional
+    public CommonResult updateCarOption(Integer carVin, List<Integer> ids) {
+        if(carMapper.deleteCarOption(carVin) < 0){
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return CommonResult.failResult("更新失败");
+        }
+        for (Integer oid:ids) {
+            if(carMapper.insertOption(carVin, oid) <= 0){
+                TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                return CommonResult.failResult("更新失败");
+            }
+        }
+        return CommonResult.successResult();
+    }
 
     @Override
     @Transactional

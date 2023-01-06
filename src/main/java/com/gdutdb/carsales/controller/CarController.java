@@ -36,13 +36,7 @@ public class CarController {
         // 新增和修改都用这个接口
         @PutMapping("/{id}/option/update")
         public CommonResult updateOption(@PathVariable Integer id,@RequestBody List<Integer> optionId){
-            List<CarOption> carOptions=new ArrayList<>();
-            for (Integer oid:optionId) {
-                carOptions.add(new CarOption(id,oid));
-            }
-            carService.deleteCarOption(id);
-            carOptionService.saveOrUpdateBatch(carOptions);
-            return carOptionService.saveOrUpdateBatch(carOptions)? CommonResult.successResult():CommonResult.failResult("更新选项失败");
+            return carService.updateCarOption(id, optionId);
         }
 
         //查看这个车所对应的品牌的选项，已选的选项则进行标记
