@@ -30,6 +30,11 @@ public class InventoryServiceImpl extends ServiceImpl<InventoryMapper, Inventory
     }
 
     @Override
+    public CommonResult queryByStaffId(Integer staffId) {
+        return  CommonResult.successResult(inventoryMapper.queryByStaffId(staffId));
+    }
+
+    @Override
     public CommonResult deleteByInventoryId(Integer inventoryId) {
         return inventoryMapper.deleteByInventoryId(inventoryId) > 0 ? CommonResult.successResult() : CommonResult.failResult();
     }

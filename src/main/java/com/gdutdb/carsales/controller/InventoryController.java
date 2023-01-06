@@ -35,6 +35,12 @@ public class InventoryController {
         return inventoryService.queryByDistributorId(distributorId);
     }
 
+    // 查询经销商库存数据
+    @GetMapping("/staff/{staffId}")
+    public CommonResult findByStaffrId(@PathVariable Integer staffId) {
+        return inventoryService.queryByStaffId(staffId);
+    }
+
     @DeleteMapping("/{id}")
     public CommonResult delete(@PathVariable Integer id) {
         return inventoryService.deleteByInventoryId(id);

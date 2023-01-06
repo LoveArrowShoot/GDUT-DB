@@ -14,6 +14,7 @@ public interface InventoryMapper extends BaseMapper<Inventory> {
     List<InventoryDetail> queryAll();
     InventoryDetail queryByCarVin(Integer carVin);
     InventoryDetail queryByDistributorId(Integer distributeId);
+    InventoryDetail queryByStaffId(Integer distributeId);
     Integer deleteByInventoryId(Integer inventoryId);
     Integer updateCount(@Param("inventoryId") Integer inventoryId,@Param("count") Integer count);
     Integer changeCount(@Param("inventoryId") Integer inventoryId,@Param("count") Integer count);

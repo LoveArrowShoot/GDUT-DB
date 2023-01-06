@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface InventoryService extends IService<Inventory> {
     CommonResult queryAll();
     CommonResult queryByDistributorId(Integer distributorId);
+    CommonResult queryByStaffId(Integer staffId);
     CommonResult deleteByInventoryId(Integer inventoryId);
     CommonResult updateCount(Integer inventoryId, Integer count);
 }
